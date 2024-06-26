@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+}
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+#task-list {
+    list-style-type: none;
+    padding: 0;
+}
