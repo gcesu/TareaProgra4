@@ -130,4 +130,90 @@ document.addEventListener("DOMContentLoaded", function() {
             closeModal();
         });
     }
+
+        // Obtener tareas desde el servidor
+    function fetchTasks() {
+        fetch('/tasks')
+            .then(response => response.json())
+            .then(tasks => {
+                tasks.forEach(task => {
+                    addTaskToDay(task[5], task[1], task[2], task[3], task[4], task[0]);
+                });
+            });
+    }
+
+    // Función para agregar tarea al servidor
+    function addTaskToServer(task) {
+        fetch('/tasks', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }).then(response => response.json())
+        .then(data => {
+            console.log(data);
+            fetchTasks();
+        });
+    }
+
+    // Función para eliminar tarea del servidor
+    function deleteTaskFromServer(taskId) {
+        fetch(`/tasks/${taskId}`, {
+            method: 'DELETE'
+        }).then(response => response.json())
+        .then(data => {
+            console.log(data);
+            fetchTasks();
+        });
+    }
+
+    // Modificar las funciones existentes para incluir las llamadas al servidor
+    function addTaskToDay(day, taskName, taskDate, taskTime, taskDescription, taskId) {
+        const dayContainer = document.getElementById(day);
+        const task = document.createElement("div");
+        task.className = "task";
+        task.dataset.id = taskId;
+        task.innerHTML = `
+            <div class="task-details">
+                <h3 class="task-title">${taskName}</h3>
+                <p class="task-time">${taskTime}</p>
+                <p class="task-date">${taskDate}</p>
+                <p class="task-description">${taskDescription}</p>
+            </div>
+            <div class="task-buttons">
+                <button class="modify-task-btn">Modificar</button>
+                <button class="finalize-task-btn">Finalizar</button>
+            </div>
+        `;
+
+        dayContainer.appendChild(task);
+
+        const taskCountElement = dayContainer.querySelector('.task-count');
+        const taskCount = dayContainer.querySelectorAll('.task').length;
+        taskCountElement.textContent = taskCount;
+
+        task.querySelector(".finalize-task-btn").addEventListener("click", function() {
+            deleteTask(taskId);
+        });
+    }
+
+    function deleteTask(taskId) {
+        const task = document.querySelector(`.task[data-id='${taskId}']`);
+        const dayContainer = task.closest('.day');
+        const taskCountElement = dayContainer.querySelector('.task-count');
+
+        task.remove();
+
+        const taskCount = dayContainer.querySelectorAll('.task').length;
+        taskCountElement.textContent = taskCount;
+
+        deleteTaskFromServer(taskId);
+    }
+
+    // Llamar a fetchTasks al cargar la página
+    document.addEventListener("DOMContentLoaded", function() {
+        fetchTasks();
+    });
+
 });
