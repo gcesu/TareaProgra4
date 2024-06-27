@@ -1,17 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>To-Do List</title>
+    <title>Lista de tareas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <form id="task-form">
-        <input type="text" id="task-input" placeholder="New Task">
-        <button type="submit">Add Task</button>
-    </form>
+
+    <h1>Lista de tareas</h1>
+
+    <div class="week-container">
+        <div id="monday" class="day">
+            <div class="day-header">
+                <span>Lunes</span>
+                <button class="add-task-btn" data-day="monday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="tuesday" class="day">
+            <div class="day-header">
+                <span>Martes</span>
+                <button class="add-task-btn" data-day="tuesday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="wednesday" class="day">
+            <div class="day-header">
+                <span>Miércoles</span>
+                <button class="add-task-btn" data-day="wednesday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="thursday" class="day">
+            <div class="day-header">
+                <span>Jueves</span>
+                <button class="add-task-btn" data-day="thursday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="friday" class="day">
+            <div class="day-header">
+                <span>Viernes</span>
+                <button class="add-task-btn" data-day="friday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="saturday" class="day">
+            <div class="day-header">
+                <span>Sábado</span>
+                <button class="add-task-btn" data-day="saturday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+        <div id="sunday" class="day">
+            <div class="day-header">
+                <span>Domingo</span>
+                <button class="add-task-btn" data-day="sunday">+</button>
+                <div class="task-count">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agregar Tarea</h2>
+            <form id="add-task-form">
+                <div>
+                    <label for="task-name"><strong>Nombre de la tarea:</strong></label>
+                    <input type="text" id="task-name" name="task-name" required>
+                </div>
+                <div>
+                    <label for="task-date"><strong>Fecha límite:</strong></label>
+                    <input type="date" id="task-date" name="task-date" required>
+                </div>
+                <div>
+                    <label for="task-time"><strong>Hora límite:</strong></label>
+                    <input type="time" id="task-time" name="task-time" required>
+                </div>
+                <div>
+                    <label for="task-description"><strong>Descripción:</strong></label>
+                    <textarea id="task-description" name="task-description"></textarea>
+                </div>
+                
+                <button type="submit">Agregar Tarea</button>
+            </form>
+        </div>
+    </div>
+
     <ul id="task-list"></ul>
-    <script src="scripts.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
