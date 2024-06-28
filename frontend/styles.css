@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 h1 {
@@ -182,7 +183,7 @@ form {
 }
 
 .modify-task-btn {
-    background-color: #4CAF50;
+    background-color: #c28c21;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -191,7 +192,7 @@ form {
 }
 
 .modify-task-btn:hover {
-    background-color: #45a049;
+    background-color: #b87b00;
 }
 
 .finalize-task-btn {
