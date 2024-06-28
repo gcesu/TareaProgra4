@@ -1,14 +1,16 @@
 class Task:
-    def __init__(self, id, title, description, status):
+    def __init__(self, id, name, date, time, description):
         self.id = id
-        self.title = title
+        self.name = name
+        self.date = date
+        self.time = time
         self.description = description
-        self.status = status
 
     def serialize(self):
         return {
             "id": self.id,
-            "title": self.title,
-            "description": self.description,
-            "status": self.status
+            "name": self.name,
+            "date": self.date,
+            "time": self.time,
+            "description": self.description
         }

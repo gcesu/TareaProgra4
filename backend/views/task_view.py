@@ -2,9 +2,13 @@ from flask import jsonify
 
 def task_response(task):
     response = {
-        "id": task.id,
-        "title": task.title,
-        "description": task.description,
-        "status": task.status
+        'status': 'success',
+        'task': {
+            'id': task.id,
+            'name': task.name,
+            'date': task.date,
+            'time': task.time,
+            'description': task.description
+        }
     }
     return jsonify(response)

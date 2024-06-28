@@ -2,11 +2,15 @@
   "name": "tareaprogra4",
   "version": "1.0.0",
   "main": "server.js",
-
   "dependencies": {
     "express": "^4.19.2"
   },
   "scripts": {
     "start": "node server.js"
-  }
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
