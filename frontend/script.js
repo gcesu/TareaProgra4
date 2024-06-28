@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var closeBtn = document.querySelector(".close");
     var addTaskBtns = document.querySelectorAll(".add-task-btn");
 
-    var selectedDay = ""; // Variable para almacenar el día seleccionado.
+    var selectedDay = ""; // Variable para almacenar el día seleccionado
 
     function openModal(day) {
         selectedDay = day;
